@@ -1,7 +1,7 @@
 <?php 
 
 // menghubungkan dengan koneksi
-$koneksi = mysqli_connect("localhost","root","","pelanggan_pln");
+require 'functions.php';
 
 // menghubungkan dengan library excel reader
 include "excel_reader.php";
@@ -32,7 +32,7 @@ for ($i=2; $i<=$jumlah_baris; $i++){
     if($idpel != "" && $nama != "" && $tagihan != "" && $telepon != "")
     {
         // input data ke database (table barang)
-        mysqli_query($koneksi,"INSERT into pelanggan values('', '$idpel' ,'$nama','$tagihan', '$telepon')");
+        mysqli_query($conn,"INSERT into pelanggan values('', '$idpel' ,'$nama','$tagihan', '$telepon')");
         
     }
 }

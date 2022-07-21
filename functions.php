@@ -15,13 +15,15 @@ $conn = mysqli_connect("localhost", "root", "", "pelanggan_pln" );
 
     function hapus (){
     
-        $koneksi = mysqli_connect("localhost","root","","pelanggan_pln");
+        global $conn;
 
-        mysqli_query($koneksi,"TRUNCATE TABLE pelanggan");
+        mysqli_query($conn,"TRUNCATE TABLE pelanggan");
         echo "<script>window.alert('data berhasil di hapus!')</script>";
         echo "<script>window.location='".$_SERVER['HTTP_REFERER']."'</script>";
     
         }
+
+
 
 function kirimPesan ($pesan, $no_wa){
     global $pesan, $no_wa;
@@ -31,28 +33,29 @@ function kirimPesan ($pesan, $no_wa){
     // echo "function no_wa ".$no_wa."</br>";
 
     // return
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://panel.rapiwha.com/send_message.php?apikey=RQQDZNGZPUNGTAQE2D98&number=".$no_wa."&text=".$pesan,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-
-    ));
-
-    $response = curl_exec($curl);
-    $err = curl_error($curl);
-    curl_close($curl);
-
-    if ($err) {
-    echo "cURL Error #:" . $err;
-    } else {
-    echo $response;
-    }
+$dataSending = Array();
+$dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
+$dataSending["number_key"] = "GojOLnBjIu29fcqy";
+$dataSending["phone_no"] = $no_wa;
+$dataSending["message"] = $pesan;
+$curl = curl_init();
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => json_encode($dataSending),
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
+$response = curl_exec($curl);
+curl_close($curl);
+echo $response;
 }
 
 

@@ -15,40 +15,64 @@ if (isset( $_POST ["register"])){
 }
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
-    <head>
-        <body>
-            <h1>Halaman Registrasi</h1>
-            <style>
-                label{
-                    display: block;
-                }
-            </style>
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a341d667ca.js" crossorigin="anonymous"></script>
 
-            <form action="" method="post">
-                <fieldset>
-                    <p>
-                        <label for="username">username : </label>
-                        <input type="text" name="username" id="username">
-                    </p>
+</head>
+<body>
+<div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+                <div class="card-group">
+                    <div class="card p-4">
+                        <div class="card-body">
+      
+            <h1 class="mb-5 text-center">Registrasi</h1>  
+            <div class="row justify-content-center mt-5 mb-5">
+            <img src="img/pln.png" style="width: 100px;" alt="">
+            </div>
+                            <form method="POST" action="">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="floatingInput" name="username" placeholder="name@example.com">
+                                    <label for="floatingInput">Email / Username</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <label for="floatingPassword">Password</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password2" class="form-control" id="floatingPassword" placeholder="Password2">
+                                    <label for="floatingPassword">Konfirmasi Password</label>
+                                </div>
 
-                    <p>
-                        <label for="password">password : </label>
-                        <input type="password" name="password" id="password">
-                    </p>
-                    <p>
-                        <label for="password2">konfirmasi password : </label>
-                        <input type="password" name="password2" id="password2">
-                    </p>
+                                <div class="form-group ">
+                                    <div class=" text-right">
+                                        <button type="submit" class="btn btn-info btn-lg" name="register" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                            Sign Up
+                                        </button>
+                                        <button type="submit" class="btn btn-link btn-lg"  style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                        <a href ="login.php" class="btn-link">Login</a>
+                                        </button>
+                                        <br>
+                                        
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
 
-                    <p>
-                        <button type="submit" name="register">Register</button>
-                    </p>
-
-                </fieldset>
-            </form>
-            
-        </body>
-    </head>
 </html>

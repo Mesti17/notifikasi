@@ -46,25 +46,27 @@ if(isset($_POST["search"])){
                     Sistem Notifikasi Data Pelanggan Pln Menunggak
                 </h3>
           
+        <div class="text-right">
+         <a href ="send_message.php" class="btn-link">Kirim pesan</a>
         <br>
-        <button class="btn-link" type="submit" name="search"> <a href ="send_message.php">Kirim pesan</a></button>
-        <br><br>
-                   
+        <a href ="logout.php" class="btn-link">logout</a>
+</div>
             <form action="" method="post">
                 <input type="text" name="keyword" size="40" 
                     autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
                 <button class="btn-info" type="submit" name="search">search</button> 
-                <button class="btn-danger" type="submit" name="search"> <a href ="hapus.php">Hapus</a></button>
             </form>
 
             <!-- membuat form upload -->
-
+            <br>
             <form method="post" enctype="multipart/form-data" action="proses_upload.php">
                         Pilih File:
                         <input class="form-control" name="filepelanggan" type="file" required="required">
                         <br>
                         <button class=" btn-secondary" type="submit" name="upload">Import</button>
+                        <button class="btn-danger" type="submit" name="search"> <a href ="hapus.php">Hapus</a></button>
                     </form>
+                   
 
                 <br>
                     <table class="table">
