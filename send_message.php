@@ -3,16 +3,17 @@ require 'functions.php';
 
 if(isset($_POST['kirim'])){
 
-    $pesan  = $_POST['pesan'];
+    $pesan  = $_POST['send'];
     $no_wa  = $_POST;
+    
 
     // echo "No Wa".$no_wa;
     // kirimPesan($pesan,$no_wa);
+    
 
     $pelanggan = query("SELECT * FROM pelanggan");
     foreach ($pelanggan as $data){
         $nama = $data['nama'];
-
         $no_wa = '62'.substr($data['telepon'], 1);
         // echo "No Wa ".$str;
 
@@ -21,7 +22,6 @@ if(isset($_POST['kirim'])){
         kirimPesan($nama,$no_wa);
     }    
 }   
-
 
 ?>
 
@@ -51,22 +51,55 @@ if(isset($_POST['kirim'])){
         </h3>
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data" action="">
-                            <div class="form-group row">
-                                    <label class="col-md-0 col-form-label">Ketik pesan di bawah ini :</label>
-                                        <div class="col-md-5">
-                                    <textarea name="pesan" rows="8" cols="84" id="kirim" value=""></textarea>
-                                </div>
-                            </div>
+
+                        <div class="form-group">
+                        <label>Pilih isi pesan</label>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="pesan" value = "Assalamualaikum wr.wb Bapak/Ibu pelanggan PLN yang terhormat. Mohon segera selesaikan tagihan listrik anda karna telah melewati batas pembayaran. Berikut adalah total tagihan anda Terima Kasih Wassalam" checked>
+                            Assalamualaikum wr.wb Bapak/Ibu pelanggan PLN yang terhormat
+                            Mohon segera selesaikan tagihan listrik anda karna telah melewati batas pembayaran.
+                            Terima Kasih.
+                            Wassalam
+                          </label>
+                        </div>
+                        <div class="radio ">
+                          <label>
+                          <input type="radio" name="pesan" value = "Assalamualaikum wr.wb Bapak/Ibu pelanggan PLN yang terhormat. Mohon segera selesaikan tagihan listrik anda karna telah melewati batas pembayaran. Berikut adalah total tagihan anda Terima Kasih Wassalam" >
+                            Assalamualaikum wr.wb Bapak/Ibu pelanggan PLN yang terhormat
+                            Mohon segera selesaikan tagihan listrik anda karna telah melewati batas pembayaran.
+                            Terima Kasih.
+                            Wassalam
+                          </label>
+                        </div>
+                        </div>
+                      </div>
+
+                <!-- textarea -->
+                    <script>
+                      function displayRadioValue() {
+                          var ele = document.getElementsByName('pesan');
+                            
+                          for(i = 0; i < ele.length; i++) {
+                              if(ele[i].checked)
+                              document.getElementById("textarea").innerHTML= ele[i].value;
+                          }
+                      }
+                  </script>
+                    <div class="form-group">
+                        <label>Isi Pesan</label>
+                        <textarea class="form-control" onclick="displayRadioValue()" name="send" id="textarea" rows="6" placeholder="Klik di sini untuk melihat isi pesan"></textarea>
+                    </div>    
                             <div>
                                 <div class="text-center">
-                                <button type="submit" name="kirim" class="btn btn-success ">Kirim </button>
+                                <button type="submit" name="kirim" class="btn btn-primary ">Kirim </button>
                             </div>
                             </div>
                             <div class="text-right">
                             <a href ="index.php" class="btn-link">Kembali</a>
                             </div>
                            
-                        </form>      
+                        </form>  
                     </div>
                 </div>
                 </div>

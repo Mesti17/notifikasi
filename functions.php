@@ -33,13 +33,13 @@ function kirimPesan ($pesan, $no_wa){
     // echo "function no_wa ".$no_wa."</br>";
 
     // return
-$dataSending = Array();
-$dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
-$dataSending["number_key"] = "GojOLnBjIu29fcqy";
-$dataSending["phone_no"] = $no_wa;
-$dataSending["message"] = $pesan;
-$curl = curl_init();
-curl_setopt_array($curl, array(
+    $dataSending = Array();
+    $dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
+    $dataSending["number_key"] = "GojOLnBjIu29fcqy";
+    $dataSending["phone_no"] = $no_wa;
+    $dataSending["message"] = $pesan;
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',

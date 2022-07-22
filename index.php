@@ -50,7 +50,7 @@ if(isset($_POST["search"])){
          <a href ="send_message.php" class="btn-link">Kirim pesan</a>
         <br>
         <a href ="logout.php" class="btn-link">logout</a>
-</div>
+        </div>
             <form action="" method="post">
                 <input type="text" name="keyword" size="40" 
                     autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
@@ -64,13 +64,11 @@ if(isset($_POST["search"])){
                         <input class="form-control" name="filepelanggan" type="file" required="required">
                         <br>
                         <button class=" btn-secondary" type="submit" name="upload">Import</button>
-                        <button class="btn-danger" type="submit" name="search"> <a href ="hapus.php">Hapus</a></button>
+                        <button class="btn-danger"> <a href ="hapus.php">Hapus</a></button>
                     </form>
-                   
-
                 <br>
                     <table class="table">
-                        <thead class="thead-dark">
+                        <thead class="table-secondary">
                                 <!-- set table header  -->
                             <tr>
                                 <th scope="col">#</th>
