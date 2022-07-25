@@ -90,7 +90,7 @@ echo $response;
         if( $password !== $password2){
             echo"<script>  
                     alert('konfirmasi password tidak sesuai');
-                </script>";
+                    </script>";
             return false;
 
         }
@@ -102,4 +102,6 @@ echo $response;
         mysqli_query($conn, "INSERT INTO user VALUES ('', '$username', '$password' )");
    
         return mysqli_affected_rows($conn);
+
+        
     }

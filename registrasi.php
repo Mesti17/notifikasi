@@ -66,6 +66,10 @@ if (isset( $_POST ["register"])){
                                     </div>
                                 </div>
                             </form>
+
+                            <?php
+                                header("location:login.php");
+                            ?>
                         </div>
                     </div>
                 </div>
