@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (!isset ($_SESSION["login"])){
+  header("Location: login.php");
+  exit;
+}
+
 require 'functions.php';
 
 //pagination
@@ -53,7 +60,7 @@ if(isset($_POST["search"])){
             </div>
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data" action="">
-                            <input type="text" name="keyword" size="40" 
+                            <input class="form-control" type="text" name="keyword" size="40" 
                                 autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
                                 <button class="btn-info" type="submit" name="search">search</button> 
                         </form>

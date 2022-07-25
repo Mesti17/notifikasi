@@ -89,7 +89,7 @@ if(isset($_POST['kirim'])){
                     <div class="form-group">
                         <label>Isi Pesan</label>
                         <textarea class="form-control" onclick="displayRadioValue()" name="send" id="textarea" rows="6" placeholder="Klik di sini untuk melihat isi pesan"></textarea>
-                    </div>    
+                    </div><br> 
                             <div>
                                 <div class="text-center">
                                 <button type="submit" name="kirim" class="btn btn-primary ">Kirim </button>
