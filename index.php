@@ -78,11 +78,15 @@ if(isset($_POST["search"])){
                     <div class="box-typical-body">
                     <div class="table-responsive">
                         <table id="table-sm" class="table table-bordered table-hover table-sm">
-                            <thead >
+                            <thead>
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">ID Pelanggan</th>
                                     <th scope="col">Nama</th>
+                                    <th scope="col">Tarif</th>
+                                    <th scope="col">Daya</th>
+                                    <th scope="col">Halaman</th>
                                     <th scope="col">Tagihan</th>
                                     <th scope="col">Telepon</th>
                                 </tr>
@@ -94,8 +98,12 @@ if(isset($_POST["search"])){
                         <?php foreach ($pelanggan as $data) : ?>
                 <tr>
                     <td><?php echo $i; ?> </td>
+                    <td><?php echo $data['tanggal']; ?></td>
                     <td><?php echo $data['idpel']; ?></td>
                     <td><?php echo $data['nama']; ?></td>
+                    <td><?php echo $data['tarif']; ?></td>
+                    <td><?php echo $data['daya']; ?></td>
+                    <td><?php echo $data['lembar']; ?></td>
                     <td><?php echo $data['tagihan']; ?></td>
                     <td><?php echo $data['telepon']; ?></td>
                 </td>

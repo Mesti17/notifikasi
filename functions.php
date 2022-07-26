@@ -1,6 +1,6 @@
 <?php 
 //konek ke db  
-$conn = mysqli_connect("localhost", "root", "", "pelanggan_pln" );
+$conn = mysqli_connect("localhost", "root", "", "notifkasi_pln" );
 
   
     function query($query){
@@ -27,19 +27,14 @@ $conn = mysqli_connect("localhost", "root", "", "pelanggan_pln" );
 
 function kirimPesan ($pesan, $no_wa){
     global $pesan, $no_wa;
-    // $no_wa = '6281372151728';
-    
-    // echo "</br> function pesan ".$pesan."</br>";
-    // echo "function no_wa ".$no_wa."</br>";
-
-    // return
-    $dataSending = Array();
-    $dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
-    $dataSending["number_key"] = "GojOLnBjIu29fcqy";
-    $dataSending["phone_no"] = $no_wa;
-    $dataSending["message"] = $pesan;
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
+   
+$dataSending = Array();
+$dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
+$dataSending["number_key"] = "GojOLnBjIu29fcqy";
+$dataSending["phone_no"] = $no_wa;
+$dataSending["message"] = $pesan;
+$curl = curl_init();
+curl_setopt_array($curl, array(
   CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
@@ -56,13 +51,20 @@ function kirimPesan ($pesan, $no_wa){
 $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
+
+
+
 }
 
 
     function cari($keyword){
         $query = "SELECT * FROM pelanggan WHERE
+               tanggal LIKE '%$keyword%' OR 
                idpel LIKE '%$keyword%' OR  
-               nama LIKE '%$keyword%' OR 
+               nama LIKE '%$keyword%' OR
+            --    tarif LIKE '%$keyword%' OR  
+            --    daya LIKE '%$keyword%' OR 
+            --    tagihan LIKE '%$keyword%' OR 
                telepon LIKE '%$keyword%' 
             ";
         return query($query);
@@ -90,7 +92,7 @@ echo $response;
         if( $password !== $password2){
             echo"<script>  
                     alert('konfirmasi password tidak sesuai');
-                    </script>";
+                </script>";
             return false;
 
         }
@@ -102,6 +104,4 @@ echo $response;
         mysqli_query($conn, "INSERT INTO user VALUES ('', '$username', '$password' )");
    
         return mysqli_affected_rows($conn);
-
-        
     }

@@ -24,15 +24,25 @@ $jumlah_baris = $data->rowcount($sheet_index=0);
 for ($i=2; $i<=$jumlah_baris; $i++){
 
     // menangkap data dan memasukkan ke variabel sesuai dengan kolumnya masing-masing
-    $idpel     	    = $data->val($i, 1);
-    $nama           = $data->val($i, 2);
-    $tagihan  		= $data->val($i, 3);
-    $telepon		= $data->val($i, 4);
 
-    if($idpel != "" && $nama != "" && $tagihan != "" && $telepon != "")
+    $tanggal    	= $data->val($i, 1);
+    $idpel     	    = $data->val($i, 2);
+    $nama           = $data->val($i, 3);
+    $tarif          = $data->val($i, 4);
+    $daya           = $data->val($i, 5);
+    $lembar  		= $data->val($i, 6);
+    $tagihan 		= $data->val($i, 7);
+    $telepon		= $data->val($i, 8);
+
+    // echo $tanggal;
+    // die;
+
+    if($tanggal != "" && $idpel != "" && $nama != "" && $tarif != "" && $daya != "" && $lembar !="" && $tagihan != "" && $telepon != "")
     {
+        // echo $tanggal;
+        // die;
         // input data ke database (table barang)
-        mysqli_query($conn,"INSERT into pelanggan values('', '$idpel' ,'$nama','$tagihan', '$telepon')");
+        mysqli_query($conn,"INSERT into pelanggan values('','$tanggal', '$idpel' ,'$nama', '$tarif', '$daya', '$lembar','$tagihan', '$telepon')");
         
     }
 }

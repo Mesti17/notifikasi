@@ -37,7 +37,7 @@ if (isset( $_POST ["register"])){
       
             <h1 class="mb-5 text-center">Registrasi</h1>  
             <div class="row justify-content-center mt-5 mb-5">
-            <img src="img/pln.png" style="width: 100px;" alt="">
+            <img src="pln.png" style="width: 100px;" alt="">
             </div>
                             <form method="POST" action="">
                                 <div class="form-floating mb-3">
@@ -66,10 +66,6 @@ if (isset( $_POST ["register"])){
                                     </div>
                                 </div>
                             </form>
-
-                            <?php
-                                header("location:login.php");
-                            ?>
                         </div>
                     </div>
                 </div>
