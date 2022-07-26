@@ -77,13 +77,13 @@ PLN ULP Lhokseumawe Kota
                             </div>
 
                             <div class="form-group">
-                                <label class="fw-bold text-dark">Isi Pesan </label>
-                                <textarea class="form-control" onclick="displayRadioValue()" name="send" id="textarea" rows="6" placeholder="Klik di sini untuk melihat isi pesan"></textarea>
+                                <label class="fw-bold text-dark">Pesan </label>
+                                <textarea class="form-control" onclick="displayRadioValue()" name="send" id="textarea" rows="6" placeholder="Klik di sini untuk membuat pesan Baru"></textarea>
                             </div><br>
                             <div>
                                 <div class="text-center">
-                                    <button type="submit" name="kirim" class="btn btn-primary ">Kirim Pesan </button>
-                                    <a href="kirimAll.php" name="kirimAll" class="btn btn-danger ">kirim tagihan ke semua pelanggan </a>
+                                    <button type="submit" name="kirim" class="btn btn-primary ">Kirim Pesan Baru </button>
+                                    <a href="kirimAll.php" name="kirimAll" class="btn btn-danger ">kirim pesan Tagihan </a>
                                 </div>
                             </div>
                             <div class="text-right">

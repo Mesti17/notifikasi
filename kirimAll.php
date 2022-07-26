@@ -3,18 +3,17 @@ session_start();
 
 include 'functions.php';
 
-if (!isset ($_SESSION["login"])){
+if (!isset($_SESSION["login"])) {
     header("Location: login.php");
     exit;
-  }
+}
 
-  $data = mysqli_query($conn, "SELECT * FROM pelanggan");
+$data = mysqli_query($conn, "SELECT * FROM pelanggan");
 
 $i = 0;
 
-$list_pesan[]='';
 
-  foreach($data as $row ){
+foreach ($data as $row) {
     $no_wa = $row['telepon'];
     $tanggal = $row['tanggal'];
     $idpel = $row['idpel'];
@@ -43,16 +42,5 @@ $list_pesan[]='';
     
     PLN ULP Lhokseumawe Kota";
 
-    array_push($list_pesan, $pesan);
     kirimPesan($pesan, $no_wa);
-
-
-
-
-  }
-    var_dump ($list_pesan);
-
-
-
-?>
-
+}
