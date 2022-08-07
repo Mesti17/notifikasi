@@ -6,10 +6,8 @@ if (isset($_POST['kirim'])) {
     $pesan  = $_POST['send'];
     $no_wa  = $_POST;
 
-
     // echo "No Wa".$no_wa;
     // kirimPesan($pesan,$no_wa);
-
 
     $pelanggan = query("SELECT * FROM pelanggan");
     foreach ($pelanggan as $data) {

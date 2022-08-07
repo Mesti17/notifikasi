@@ -12,7 +12,6 @@ $data = mysqli_query($conn, "SELECT * FROM pelanggan");
 
 $i = 0;
 
-
 foreach ($data as $row) {
     $no_wa = $row['telepon'];
     $tanggal = $row['tanggal'];
@@ -20,18 +19,17 @@ foreach ($data as $row) {
     $nama = $row['nama'];
     $tagihan = $row['tagihan'];
     $tarif = $row['tarif'];
-    $daya = $row['daya'];
     $lembar = $row['lembar'];
 
     $pesan = "
-    PLN Pascabayar
+    *PLN Pascabayar*
     Tgl kirim : $tanggal
     
-    Informasi Tagihan
+    *Informasi Tagihan*
     -----------------
     Id Pelanggan : $idpel
     Nama : $nama
-    Tarif/Daya : $tarif/$daya
+    Tarif/Daya : $tarif
     Lembar : $lembar 
     
     Jml Tagihan   : Rp. $tagihan
