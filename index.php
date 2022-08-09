@@ -117,6 +117,7 @@ if (isset($_POST["search"])) {
                                             <th scope="col">Tagihan</th>
                                             <th scope="col">Telepon</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -135,11 +136,15 @@ if (isset($_POST["search"])) {
                                                 <td><?php echo $data['telepon']; ?></td>
                                                 <?php if (isset($data['status'])) : ?>
                                                     <td><?php echo ($data['status'] == "200") ? "<p class='text-success'>terkirim </p>" :  "<p class='text-danger'>gagal</p>"; ?></td>
+                                                    <?php if ($data['status'] != "200") : ?>
+                                                        <form action="kirimAll.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $data['id']; ?>">
+                                                            <td class="text-center">
+                                                                <button class="btn btn-link" style="padding: 0; text-decoration: none;" type="submit" name="ulang">Ulang</button>
+                                                            </td>
+                                                        </form>
+                                                    <?php endif; ?>
                                                 <?php endif; ?>
-
-
-
-                                                </td>
                                             </tr>
                                             <?php $i++; ?>
                                         <?php endforeach; ?>

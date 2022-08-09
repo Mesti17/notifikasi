@@ -60,6 +60,29 @@ if (isset($_POST['kirimAll'])) {
 }
 
 
+if (isset($_POST['ulang']) && isset($_POST['id'])) {
+    $id = $_POST['id'];
+    $pel = mysqli_query($conn, "SELECT * FROM pelanggan WHERE id='$id'");
+    $row = mysqli_fetch_assoc($pel);
+
+    $no_wa = $row['telepon'];
+    $tanggal = $row['tanggal'];
+    $idpel = $row['idpel'];
+    $nama = $row['nama'];
+    $tagihan = $row['tagihan'];
+    $tarif = $row['tarif'];
+    $lembar = $row['lembar'];
+
+    $pesan = "*PLN Pascabayar*\nTgl kirim : $tanggal\n\n*Informasi Tagihan*\n-----------------\nId Pelanggan : $idpel\nNama : $nama\nTarif/Daya : $tarif\nLembar : $lembar \n\nJml Tagihan   : Rp. $tagihan\n\n-----------------\nAbaikan jika sudah bayar\nTerimakasih\n\nPLN ULP Lhokseumawe Kota";
+    $id = $row['id'];
+    $status = kirimPesan($pesan, $no_wa);
+    $status = mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
+
+    $_SESSION['pesan'] = $status;
+    header("location:index.php");
+}
+
+
 function kirimPesan($pesan, $no_wa)
 {
     $dataSending = array();
