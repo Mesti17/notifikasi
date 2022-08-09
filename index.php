@@ -93,7 +93,7 @@ if (isset($_POST["search"])) {
                     </div>
                     <?php if (isset($_SESSION['pesan'])) : ?>
                         <?php if ($_SESSION['pesan'] == "200") : ?>
-                            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 Pesan Berhasil Dikirimkan!
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
@@ -117,7 +117,10 @@ if (isset($_POST["search"])) {
                                             <th scope="col">Tagihan</th>
                                             <th scope="col">Telepon</th>
                                             <th scope="col">Status</th>
-                                            <th scope="col">Action</th>
+                                            <?php $cekGagal = mysqli_query($conn, "SELECT * FROM pelanggan WHERE status!='200'"); ?>
+                                            <?php if (mysqli_num_rows($cekGagal) != 0) : ?>
+                                                <th scope="col">Action</th>
+                                            <?php endif; ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -171,6 +174,9 @@ if (isset($_POST["search"])) {
         </div>
     </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
 
 </html>
