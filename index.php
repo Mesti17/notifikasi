@@ -40,6 +40,9 @@ if (isset($_POST["search"])) {
 </head>
 
 <body>
+
+
+
     <br>
     <!-- membuat container dengan lebar colomn col-lg-10  -->
     <div class="container col-lg-8">
@@ -51,7 +54,19 @@ if (isset($_POST["search"])) {
                     <h3 class="alert alert-info text-center" role="alert">
                         Halaman Import Data Pelanggan PLN
                     </h3>
-                    <div class="card-body">
+
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="send_message.php">Kirim Pesan</a></li>
+                                <li><a href="registrasi.php">Tambah user</a></li>
+                                <li><a href="logout.php">Logout</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+
+
+                    <!-- <div class="card-body">
                         <div class="text-right">
                             <a href="send_message.php" class="btn-link">Kirim pesan</a>
                             <br>
@@ -59,7 +74,7 @@ if (isset($_POST["search"])) {
                             <br>
                             <a href="registrasi.php" class="btn-link">Tambah User Baru</a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="card-body">
                         <form method="POST" enctype="multipart/form-data" action="">
                             <input class="form-control" type="text" name="keyword" size="40" autofocus placeholder="masukkan keyword pencarian.." autocomplete="off">
@@ -89,6 +104,7 @@ if (isset($_POST["search"])) {
                                             <th scope="col">Halaman</th>
                                             <th scope="col">Tagihan</th>
                                             <th scope="col">Telepon</th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -105,6 +121,12 @@ if (isset($_POST["search"])) {
                                                 <td><?php echo $data['lembar']; ?></td>
                                                 <td><?php echo $data['tagihan']; ?></td>
                                                 <td><?php echo $data['telepon']; ?></td>
+                                                <?php if (isset($data['status'])) : ?>
+                                                    <td><?php echo ($data['status'] == "200") ? "<p class='text-success'>terkirim </p>" :  "<p class='text-danger'>gagal</p>"; ?></td>
+                                                <?php endif; ?>
+
+
+
                                                 </td>
                                             </tr>
                                             <?php $i++; ?>

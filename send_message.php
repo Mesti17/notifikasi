@@ -9,15 +9,22 @@ if (isset($_POST['kirim'])) {
     // echo "No Wa".$no_wa;
     // kirimPesan($pesan,$no_wa);
 
-    $pelanggan = query("SELECT * FROM pelanggan");
+    $pelanggan = mysqli_query($conn, "SELECT * FROM pelanggan");
     foreach ($pelanggan as $data) {
+
+        $id = $data['id'];
+        // echo $status . "<br>";
+
         $nama = $data['nama'];
         $no_wa = '62' . substr($data['telepon'], 1);
         // echo "No Wa ".$str;
 
         // echo "no hp ".$no_wa."</br>";
         // $no = '';
-        kirimPesan($nama, $no_wa);
+
+        $status = kirimPesan($nama, $no_wa);
+
+        $status = mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
     }
 }
 

@@ -40,7 +40,7 @@ for ($i = 2; $i <= $jumlah_baris; $i++) {
         // echo $tanggal;
         // die;
         // input data ke database (table barang)
-        mysqli_query($conn, "INSERT into pelanggan values('','$tanggal', '$idpel' ,'$nama', '$tarif', '$lembar','$tagihan', '$telepon')");
+        mysqli_query($conn, "INSERT into pelanggan values(null,'$tanggal', '$idpel' ,'$nama', '$tarif', '$lembar','$tagihan', '$telepon', null)");
     }
 }
 

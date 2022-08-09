@@ -13,6 +13,7 @@ $data = mysqli_query($conn, "SELECT * FROM pelanggan");
 $i = 0;
 
 foreach ($data as $row) {
+
     $no_wa = $row['telepon'];
     $tanggal = $row['tanggal'];
     $idpel = $row['idpel'];
@@ -39,6 +40,9 @@ foreach ($data as $row) {
     Terimakasih
     
     PLN ULP Lhokseumawe Kota";
-
-    kirimPesan($pesan, $no_wa);
+    $id = $row['id'];
+    $status = kirimPesan($pesan, $no_wa);
+    $status = mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
 }
+
+header("location:index.php");

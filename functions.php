@@ -32,7 +32,7 @@ function kirimPesan($pesan, $no_wa)
 
     $dataSending = array();
     $dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
-    $dataSending["number_key"] = "nPFiXSWhdgIOswV1";
+    $dataSending["number_key"] = "IiQfxBCMuO34hRLS";
     $dataSending["phone_no"] = $no_wa;
     $dataSending["message"] = $pesan;
     $curl = curl_init();
@@ -52,7 +52,8 @@ function kirimPesan($pesan, $no_wa)
     ));
     $response = curl_exec($curl);
     curl_close($curl);
-    echo $response;
+    $response = json_decode($response, true);
+    return $response['status'];
 }
 
 
