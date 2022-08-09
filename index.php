@@ -43,6 +43,7 @@ if (isset($_POST["search"])) {
 
 
 
+
     <br>
     <!-- membuat container dengan lebar colomn col-lg-10  -->
     <div class="container col-lg-8">
@@ -90,6 +91,17 @@ if (isset($_POST["search"])) {
                             <button class="btn-danger"> <a href="hapus.php">Hapus</a></button>
                         </form>
                     </div>
+                    <?php if (isset($_SESSION['pesan'])) : ?>
+                        <?php if ($_SESSION['pesan'] == "200") : ?>
+                            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                                Pesan Berhasil Dikirimkan!
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php endif; ?>
+                    <?php endif;
+                    unset($_SESSION['pesan']);
+                    ?>
+
                     <div class="card-body">
                         <div class="box-typical-body">
                             <div class="table-responsive">

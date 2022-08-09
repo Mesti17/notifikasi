@@ -1,6 +1,6 @@
 <?php
 //konek ke db  
-$conn = mysqli_connect("localhost", "root", "", "notifkasi_pln");
+$conn = mysqli_connect("localhost", "root", "", "notifikasi_pln");
 
 
 function query($query)
@@ -25,36 +25,6 @@ function hapus()
 }
 
 
-
-function kirimPesan($pesan, $no_wa)
-{
-    global $pesan, $no_wa;
-
-    $dataSending = array();
-    $dataSending["api_key"] = "IVYNRG0UUIEHPGOW";
-    $dataSending["number_key"] = "IiQfxBCMuO34hRLS";
-    $dataSending["phone_no"] = $no_wa;
-    $dataSending["message"] = $pesan;
-    $curl = curl_init();
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => 'https://api.watzap.id/v1/send_message',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 10,
-        CURLOPT_TIMEOUT => 0,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS => json_encode($dataSending),
-        CURLOPT_HTTPHEADER => array(
-            'Content-Type: application/json'
-        ),
-    ));
-    $response = curl_exec($curl);
-    curl_close($curl);
-    $response = json_decode($response, true);
-    return $response['status'];
-}
 
 
 function cari($keyword)
