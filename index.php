@@ -91,10 +91,16 @@ if (isset($_POST["search"])) {
                             <button class="btn-danger"> <a href="hapus.php">Hapus</a></button>
                         </form>
                     </div>
+
                     <?php if (isset($_SESSION['pesan'])) : ?>
                         <?php if ($_SESSION['pesan'] == "200") : ?>
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 Pesan Berhasil Dikirimkan!
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        <?php else : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                Pesan Gagal Dikirimkan!
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         <?php endif; ?>

@@ -76,9 +76,10 @@ if (isset($_POST['ulang']) && isset($_POST['id'])) {
     $pesan = "*PLN Pascabayar*\nTgl kirim : $tanggal\n\n*Informasi Tagihan*\n-----------------\nId Pelanggan : $idpel\nNama : $nama\nTarif/Daya : $tarif\nLembar : $lembar \n\nJml Tagihan   : Rp. $tagihan\n\n-----------------\nAbaikan jika sudah bayar\nTerimakasih\n\nPLN ULP Lhokseumawe Kota";
     $id = $row['id'];
     $status = kirimPesan($pesan, $no_wa);
-    $status = mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
-
     $_SESSION['pesan'] = $status;
+
+    mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
+
     header("location:index.php");
 }
 
