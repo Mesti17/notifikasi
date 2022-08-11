@@ -1,35 +1,3 @@
-<?php
-require 'functions.php';
-
-if (isset($_POST['kirim'])) {
-
-    $pesan  = $_POST['send'];
-    $no_wa  = $_POST;
-
-    // echo "No Wa".$no_wa;
-    // kirimPesan($pesan,$no_wa);
-
-    $pelanggan = mysqli_query($conn, "SELECT * FROM pelanggan");
-    foreach ($pelanggan as $data) {
-
-        $id = $data['id'];
-        // echo $status . "<br>";
-
-        $nama = $data['nama'];
-        $no_wa = '62' . substr($data['telepon'], 1);
-        // echo "No Wa ".$str;
-
-        // echo "no hp ".$no_wa."</br>";
-        // $no = '';
-
-        $status = kirimPesan($nama, $no_wa);
-
-        $status = mysqli_query($conn, "UPDATE pelanggan SET status='$status' WHERE id='$id'");
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,9 +8,12 @@ if (isset($_POST['kirim'])) {
     <!-- import bootstrap  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a341d667ca.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+
+
     <br>
     <!-- membuat container dengan lebar colomn col-lg-10  -->
     <div class="container col-lg-8">
@@ -55,7 +26,7 @@ if (isset($_POST['kirim'])) {
                         Kirim Pesan Notifikasi
                     </h3>
                     <div class="card-body">
-                        <form method="POST" enctype="multipart/form-data" action="">
+                        <form method="POST" enctype="multipart/form-data" action="kirimAll.php">
 
                             <div class="form-group">
                                 <label class="fw-bold text-dark">Format Pesan Tagihan :</label>
@@ -88,7 +59,7 @@ PLN ULP Lhokseumawe Kota
                             <div>
                                 <div class="text-center">
                                     <button type="submit" name="kirim" class="btn btn-primary ">Kirim Pesan Baru </button>
-                                    <a href="kirimAll.php" name="kirimAll" class="btn btn-danger ">kirim pesan Tagihan </a>
+                                    <button type="submit" name="kirimAll" class="btn btn-outline-success ">kirim pesan Tagihan </button>
                                 </div>
                             </div>
                             <div class="text-right">
@@ -99,8 +70,6 @@ PLN ULP Lhokseumawe Kota
                 </div>
             </div>
         </div>
-    </div>
-    </div>
     </div>
 </body>
 
